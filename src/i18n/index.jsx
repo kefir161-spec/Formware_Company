@@ -1,47 +1,16 @@
-import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
+import React, { createContext, useContext, useEffect, useMemo } from "react";
 import en from "./locales/en";
-import ru from "./locales/ru";
-
-const STORAGE_KEY = "software-lang";
-
-export const locales = {
-  en: { label: "EN", name: "English", messages: en },
-  ru: { label: "RU", name: "Русский", messages: ru },
-};
 
 const I18nContext = createContext(null);
 
-function detectLanguage() {
-  const stored = localStorage.getItem(STORAGE_KEY);
-  if (stored && locales[stored]) return stored;
-
-  const browser = navigator.language?.slice(0, 2).toLowerCase();
-  if (browser && locales[browser]) return browser;
-
-  return "en";
-}
-
 export function I18nProvider({ children }) {
-  const [lang, setLangState] = useState(detectLanguage);
-
-  const setLang = (next) => {
-    if (!locales[next]) return;
-    setLangState(next);
-    localStorage.setItem(STORAGE_KEY, next);
-  };
-
-  const value = useMemo(() => ({
-    lang,
-    setLang,
-    t: locales[lang].messages,
-    locales: Object.entries(locales).map(([code, { label, name }]) => ({ code, label, name })),
-  }), [lang]);
+  const value = useMemo(() => ({ t: en }), []);
 
   useEffect(() => {
-    document.documentElement.lang = lang;
-    document.title = value.t.meta.title;
-    document.querySelector('meta[name="description"]')?.setAttribute("content", value.t.meta.description);
-  }, [lang, value.t.meta]);
+    document.documentElement.lang = "en";
+    document.title = en.meta.title;
+    document.querySelector('meta[name="description"]')?.setAttribute("content", en.meta.description);
+  }, []);
 
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
 }

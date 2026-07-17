@@ -47,9 +47,6 @@ button { color: inherit; }
 .main-nav > a:hover::after { transform: scaleX(1); transform-origin: left; }
 .nav-cta { display: flex; align-items: center; gap: 22px; padding: 13px 15px; color: white; background: var(--ink); }
 .header-actions { display: flex; align-items: center; gap: 12px; }
-.lang-switcher { display: flex; border: 1px solid rgba(21, 22, 19, .2); }
-.lang-switcher button { padding: 7px 11px; border: 0; background: transparent; font-size: 11px; font-weight: 800; letter-spacing: 0; cursor: pointer; transition: background .2s, color .2s; }
-.lang-switcher button.active { color: white; background: var(--ink); }
 .menu-button { display: none; border: 0; background: transparent; padding: 8px; }
 
 .hero { position: relative; isolation: isolate; height: max(760px, 100svh); min-height: 760px; overflow: hidden; padding: 76px clamp(20px, 3vw, 48px) 0; }

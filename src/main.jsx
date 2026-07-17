@@ -159,25 +159,6 @@ function HeroScene() {
   return <div className="hero-canvas" ref={mountRef} aria-hidden="true" />;
 }
 
-function LanguageSwitcher() {
-  const { lang, setLang, locales } = useI18n();
-  return (
-    <div className="lang-switcher" role="group" aria-label="Language">
-      {locales.map(({ code, label }) => (
-        <button
-          key={code}
-          type="button"
-          className={lang === code ? "active" : ""}
-          onClick={() => setLang(code)}
-          aria-pressed={lang === code}
-        >
-          {label}
-        </button>
-      ))}
-    </div>
-  );
-}
-
 function Header() {
   const { t } = useI18n();
   const [open, setOpen] = useState(false);
@@ -190,7 +171,6 @@ function Header() {
         <span>SOFTWARE</span>
       </a>
       <div className="header-actions">
-        <LanguageSwitcher />
         <button className="menu-button" onClick={() => setOpen(!open)} aria-expanded={open} aria-label={t.a11y.toggleMenu}>
           {open ? <X /> : <Menu />}
         </button>
