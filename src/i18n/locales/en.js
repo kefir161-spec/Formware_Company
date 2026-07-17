@@ -1,17 +1,16 @@
 export default {
   meta: {
-    title: "Formware — Digital tools for complex products",
-    description: "Formware builds 3D configurators, sales calculators and custom business software for manufacturers.",
+    title: "Software — Digital tools for complex products",
+    description: "Software builds 3D configurators, sales calculators and custom business software for manufacturers.",
   },
   a11y: {
-    home: "Formware home",
+    home: "Software home",
     toggleMenu: "Toggle menu",
     mainNav: "Main navigation",
     configuratorPreview: "Aluminium protection configurator preview",
     flooringPreview: "Flooring system configurator preview",
     crmPreview: "Custom operations software preview",
     capabilities: "Capabilities",
-    setSurfaceColor: "Set surface color",
   },
   nav: {
     work: "Work",
@@ -22,16 +21,12 @@ export default {
     discussProject: "Discuss a project",
   },
   hero: {
-    eyebrow: "B2B PRODUCT STUDIO · EUROPE",
+    eyebrow: "B2B PRODUCT STUDIO · IT FOR BUSINESS",
     title: "Complex products.",
     titleAccent: "Clear digital tools.",
     lead: "We build 3D configurators, sales calculators and custom business software that help manufacturers quote faster, reduce manual work and make buying easier.",
     discussProject: "Discuss your project",
     viewWork: "View selected work",
-    liveConfig: "LIVE CONFIGURATION",
-    surface: "Surface",
-    size: "Size",
-    configValid: "Configuration valid",
     meta: ["Product design", "3D engineering", "Full-stack development", "Post-launch support"],
   },
   signal: [
@@ -119,7 +114,7 @@ export default {
     cta: "Show us your workflow",
     panel: {
       yourWorkflow: "YOUR WORKFLOW",
-      formwareSystem: "FORMWARE SYSTEM",
+      softwareSystem: "SOFTWARE SYSTEM",
       items: ["Contacts & messages", "Orders & documents", "Roles & approvals", "Search & reporting"],
       active: "ACTIVE",
       foot: "Your data. Clear ownership. Supported after launch.",

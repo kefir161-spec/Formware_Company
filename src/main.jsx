@@ -12,7 +12,6 @@ import {
   Menu,
   MousePointer2,
   Send,
-  Settings2,
   Sparkles,
   X,
 } from "lucide-react";
@@ -20,16 +19,10 @@ import * as THREE from "three";
 import { I18nProvider, useI18n } from "./i18n";
 import "./styles.css";
 
-const COLORS = ["#315cff", "#c8ff2e", "#ff5f31", "#171717"];
 const SOLUTION_ICONS = [Box, Calculator, Database, MousePointer2];
 
-function HeroScene({ accent }) {
+function HeroScene() {
   const mountRef = useRef(null);
-  const accentRef = useRef(accent);
-
-  useEffect(() => {
-    accentRef.current = accent;
-  }, [accent]);
 
   useEffect(() => {
     const mount = mountRef.current;
@@ -59,7 +52,7 @@ function HeroScene({ accent }) {
     const metal = new THREE.MeshStandardMaterial({ color: 0xbcc0bc, metalness: 0.76, roughness: 0.22 });
     const dark = new THREE.MeshStandardMaterial({ color: 0x222320, metalness: 0.3, roughness: 0.35 });
     const rubber = new THREE.MeshStandardMaterial({ color: 0x858a84, metalness: 0.05, roughness: 0.75 });
-    const accentMat = new THREE.MeshStandardMaterial({ color: accentRef.current, metalness: 0.18, roughness: 0.34 });
+    const accentMat = new THREE.MeshStandardMaterial({ color: 0x315cff, metalness: 0.18, roughness: 0.34 });
 
     const base = new THREE.Mesh(new THREE.BoxGeometry(5.2, 0.25, 3.45), metal);
     base.position.y = -0.2;
@@ -136,7 +129,6 @@ function HeroScene({ accent }) {
     const clock = new THREE.Clock();
     const animate = () => {
       const t = clock.getElapsedTime();
-      accentMat.color.set(accentRef.current);
       if (!reduceMotion) {
         group.rotation.y += (pointer.x * 0.14 - 0.32 - group.rotation.y) * 0.035;
         group.rotation.x += (-pointer.y * 0.07 - 0.05 - group.rotation.x) * 0.035;
@@ -194,8 +186,8 @@ function Header() {
   return (
     <header className="site-header">
       <a href="#top" className="wordmark" onClick={close} aria-label={t.a11y.home}>
-        <span className="mark">F</span>
-        <span>FORMWARE</span>
+        <span className="mark">S</span>
+        <span>SOFTWARE</span>
       </a>
       <div className="header-actions">
         <LanguageSwitcher />
@@ -283,7 +275,7 @@ function CrmVisual() {
   const { t } = useI18n();
   return (
     <div className="product-ui crm-ui" aria-label={t.a11y.crmPreview}>
-      <div className="crm-sidebar"><span className="mini-mark">F</span><i className="active" /><i /><i /><i /></div>
+      <div className="crm-sidebar"><span className="mini-mark">S</span><i className="active" /><i /><i /><i /></div>
       <div className="crm-main">
         <div className="ui-top"><span>{t.ui.ordersActive}</span><button>{t.ui.newOrder}</button></div>
         <div className="crm-metrics">
@@ -308,7 +300,6 @@ function CrmVisual() {
 
 function App() {
   const { t } = useI18n();
-  const [accent, setAccent] = useState(COLORS[0]);
   const [sent, setSent] = useState(false);
   const submit = (event) => {
     event.preventDefault();
@@ -319,7 +310,7 @@ function App() {
     <main id="top">
       <Header />
       <section className="hero">
-        <HeroScene accent={accent} />
+        <HeroScene />
         <div className="hero-shade" />
         <div className="hero-copy">
           <p className="eyebrow"><CircleDot size={15} /> {t.hero.eyebrow}</p>
@@ -329,25 +320,6 @@ function App() {
             <a className="button button-primary" href="#contact">{t.hero.discussProject} <ArrowRight size={18} /></a>
             <a className="text-link" href="#work">{t.hero.viewWork} <ArrowDown size={17} /></a>
           </div>
-        </div>
-        <div className="hero-config">
-          <div className="config-head"><Settings2 size={16} /><span>{t.hero.liveConfig}</span><b>AL-42</b></div>
-          <div className="config-row">
-            <span>{t.hero.surface}</span>
-            <div className="color-options">
-              {COLORS.map((color) => (
-                <button
-                  key={color}
-                  style={{ background: color }}
-                  className={accent === color ? "active" : ""}
-                  onClick={() => setAccent(color)}
-                  aria-label={`${t.a11y.setSurfaceColor} ${color}`}
-                />
-              ))}
-            </div>
-          </div>
-          <div className="config-row"><span>{t.hero.size}</span><b>1200 × 800 mm</b></div>
-          <div className="config-status"><Check size={15} /> {t.hero.configValid}</div>
         </div>
         <div className="hero-meta">{t.hero.meta.map((item) => <span key={item}>{item}</span>)}</div>
       </section>
@@ -445,7 +417,7 @@ function App() {
             <a className="button button-dark" href="#contact">{t.custom.cta} <ArrowRight size={18} /></a>
           </Reveal>
           <Reveal className="ownership-panel">
-            <div className="panel-head"><span>{t.custom.panel.yourWorkflow}</span><span>{t.custom.panel.formwareSystem}</span></div>
+            <div className="panel-head"><span>{t.custom.panel.yourWorkflow}</span><span>{t.custom.panel.softwareSystem}</span></div>
             {t.custom.panel.items.map((item, index) => (
               <div className="flow-row" key={item}>
                 <span>{String(index + 1).padStart(2, "0")}</span>
@@ -503,7 +475,7 @@ function App() {
             <p className="section-kicker">{t.contact.kicker}</p>
             <h2>{t.contact.title}</h2>
             <p>{t.contact.lead}</p>
-            <a href="mailto:hello@formware.eu">hello@formware.eu <ArrowRight size={17} /></a>
+            <a href="mailto:hello@software.eu">hello@software.eu <ArrowRight size={17} /></a>
           </Reveal>
           <Reveal>
             {sent ? (
@@ -527,7 +499,7 @@ function App() {
       </section>
 
       <footer>
-        <div className="footer-mark"><span className="mark">F</span><strong>FORMWARE</strong></div>
+        <div className="footer-mark"><span className="mark">S</span><strong>SOFTWARE</strong></div>
         <p>{t.footer.tagline}</p>
         <div>
           <a href="#work">{t.nav.work}</a>

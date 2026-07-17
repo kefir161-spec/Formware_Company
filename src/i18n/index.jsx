@@ -2,7 +2,7 @@ import React, { createContext, useContext, useEffect, useMemo, useState } from "
 import en from "./locales/en";
 import ru from "./locales/ru";
 
-const STORAGE_KEY = "formware-lang";
+const STORAGE_KEY = "software-lang";
 
 export const locales = {
   en: { label: "EN", name: "English", messages: en },
