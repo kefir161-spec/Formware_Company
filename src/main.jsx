@@ -6,7 +6,6 @@ import {
   Box,
   Calculator,
   Check,
-  ChevronRight,
   CircleDot,
   Database,
   Menu,
@@ -203,78 +202,64 @@ function Reveal({ children, className = "" }) {
   return <div ref={ref} className={`reveal ${className}`}>{children}</div>;
 }
 
-function ConfiguratorVisual() {
+function CaseShot({ image, video, videoWebm, title }) {
   const { t } = useI18n();
-  const [active, setActive] = useState(1);
-  return (
-    <div className="product-ui configurator-ui" aria-label={t.a11y.configuratorPreview}>
-      <div className="ui-top"><span>PF / CONFIGURE</span><span className="live-dot">{t.ui.live}</span></div>
-      <div className="config-body">
-        <div className="config-rail">
-          <span className="ui-label">{t.ui.profile}</span>
-          {["AL-20", "AL-42", "AL-60"].map((item, index) => (
-            <button key={item} onClick={() => setActive(index)} className={active === index ? "active" : ""}>{item}</button>
-          ))}
-          <span className="ui-label">{t.ui.finish}</span>
-          <div className="swatches"><i /><i /><i /></div>
-        </div>
-        <div className="config-product">
-          <div className={`profile profile-${active}`}><i /><b /><span /></div>
-          <div className="measure measure-x">1200 mm</div>
-          <div className="measure measure-y">800 mm</div>
-        </div>
-      </div>
-      <div className="ui-footer"><span>{t.ui.configValid}</span><strong>{t.ui.generateQuote} <ChevronRight size={15} /></strong></div>
-    </div>
-  );
-}
+  const videoRef = useRef(null);
+  const figureRef = useRef(null);
+  const label = `${title} — ${t.a11y.casePreview}`;
 
-function FlooringVisual() {
-  const { t } = useI18n();
-  const [material, setMaterial] = useState("blue");
-  return (
-    <div className="product-ui flooring-ui" aria-label={t.a11y.flooringPreview}>
-      <div className="ui-top"><span>{t.ui.room}</span><span>74.8 M²</span></div>
-      <div className="floor-stage">
-        <div className={`floor-grid material-${material}`}>
-          {Array.from({ length: 48 }, (_, index) => <i key={index} className={index % 9 === 0 ? "marked" : ""} />)}
-        </div>
-        <div className="floor-panel">
-          <span className="ui-label">{t.ui.material}</span>
-          <button className={material === "blue" ? "active" : ""} onClick={() => setMaterial("blue")}>{t.ui.materials[0]}</button>
-          <button className={material === "lime" ? "active" : ""} onClick={() => setMaterial("lime")}>{t.ui.materials[1]}</button>
-          <span className="ui-label">{t.ui.output}</span>
-          <strong>186 {t.ui.tiles}</strong><small>12 {t.ui.edgeProfiles}</small>
-        </div>
-      </div>
-    </div>
-  );
-}
+  useEffect(() => {
+    const node = figureRef.current;
+    const media = videoRef.current;
+    if (!node || !media) return undefined;
 
-function CrmVisual() {
-  const { t } = useI18n();
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) {
+      media.pause();
+      media.removeAttribute("autoplay");
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          media.currentTime = 0;
+          media.play().catch(() => {});
+        } else {
+          media.pause();
+          media.currentTime = 0;
+        }
+      },
+      { threshold: 0.35 },
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [video]);
+
   return (
-    <div className="product-ui crm-ui" aria-label={t.a11y.crmPreview}>
-      <div className="crm-sidebar"><span className="mini-mark">S</span><i className="active" /><i /><i /><i /></div>
-      <div className="crm-main">
-        <div className="ui-top"><span>{t.ui.ordersActive}</span><button>{t.ui.newOrder}</button></div>
-        <div className="crm-metrics">
-          <div><small>{t.ui.metrics.openQuotes}</small><strong>24</strong></div>
-          <div><small>{t.ui.metrics.inProduction}</small><strong>11</strong></div>
-          <div><small>{t.ui.metrics.waiting}</small><strong>06</strong></div>
-        </div>
-        <div className="crm-table">
-          {t.ui.crmRows.map((row, index) => (
-            <div key={row.company}>
-              <span>{row.company}</span>
-              <span><i className={`status status-${index}`} />{row.status}</span>
-              <span>{row.date}</span>
-              <ChevronRight size={14} />
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
+    <figure
+      className="case-shot"
+      ref={figureRef}
+      style={video ? { "--case-poster": `url(${image})` } : undefined}
+    >
+      {video ? (
+        <video
+          ref={videoRef}
+          className="case-shot-media"
+          poster={image}
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-label={label}
+        >
+          <source src={video} type="video/mp4" />
+          {videoWebm ? <source src={videoWebm} type="video/webm" /> : null}
+        </video>
+      ) : (
+        <img className="case-shot-media" src={image} alt={label} loading="lazy" />
+      )}
+    </figure>
   );
 }
 
@@ -314,38 +299,29 @@ function App() {
           <h2>{t.work.title}</h2>
         </Reveal>
 
-        <article className="case case-light">
-          <Reveal className="case-copy">
-            <p className="case-index">{t.work.cases[0].index}</p>
-            <h3>{t.work.cases[0].title}</h3>
-            <p>{t.work.cases[0].text}</p>
-            <div className="case-tags">{t.work.cases[0].tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-            <a href="#contact">{t.work.cases[0].link} <ArrowRight size={17} /></a>
-          </Reveal>
-          <Reveal className="case-visual"><ConfiguratorVisual /></Reveal>
-        </article>
-
-        <article className="case case-blue">
-          <Reveal className="case-copy">
-            <p className="case-index">{t.work.cases[1].index}</p>
-            <h3>{t.work.cases[1].title}</h3>
-            <p>{t.work.cases[1].text}</p>
-            <div className="case-tags">{t.work.cases[1].tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-            <a href="#contact">{t.work.cases[1].link} <ArrowRight size={17} /></a>
-          </Reveal>
-          <Reveal className="case-visual"><FlooringVisual /></Reveal>
-        </article>
-
-        <article className="case case-dark">
-          <Reveal className="case-copy">
-            <p className="case-index">{t.work.cases[2].index}</p>
-            <h3>{t.work.cases[2].title}</h3>
-            <p>{t.work.cases[2].text}</p>
-            <div className="case-tags">{t.work.cases[2].tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-            <a href="#custom-software">{t.work.cases[2].link} <ArrowRight size={17} /></a>
-          </Reveal>
-          <Reveal className="case-visual"><CrmVisual /></Reveal>
-        </article>
+        {t.work.cases.map((item) => (
+          <article key={item.title} className={`case case-${item.theme}`}>
+            <Reveal className="case-copy">
+              <p className="case-index">{item.index}</p>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+              <div className="case-tags">{item.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+              <a href={item.href} target="_blank" rel="noopener noreferrer">
+                {item.link} <ArrowRight size={17} />
+              </a>
+            </Reveal>
+            <Reveal className="case-visual">
+              <a className="case-shot-link" href={item.href} target="_blank" rel="noopener noreferrer" aria-label={item.link}>
+                <CaseShot
+                  image={item.image}
+                  video={item.video}
+                  videoWebm={item.videoWebm}
+                  title={item.title}
+                />
+              </a>
+            </Reveal>
+          </article>
+        ))}
       </section>
 
       <section className="solutions section" id="solutions">
