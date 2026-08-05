@@ -202,11 +202,20 @@ function Reveal({ children, className = "" }) {
   return <div ref={ref} className={`reveal ${className}`}>{children}</div>;
 }
 
+function assetUrl(path) {
+  if (!path || /^https?:\/\//i.test(path)) return path;
+  const base = import.meta.env.BASE_URL || "./";
+  return `${base}${String(path).replace(/^\//, "")}`;
+}
+
 function CaseShot({ image, video, videoWebm, title }) {
   const { t } = useI18n();
   const videoRef = useRef(null);
   const figureRef = useRef(null);
   const label = `${title} — ${t.a11y.casePreview}`;
+  const poster = assetUrl(image);
+  const mp4 = assetUrl(video);
+  const webm = assetUrl(videoWebm);
 
   useEffect(() => {
     const node = figureRef.current;
@@ -234,30 +243,30 @@ function CaseShot({ image, video, videoWebm, title }) {
     );
     observer.observe(node);
     return () => observer.disconnect();
-  }, [video]);
+  }, [mp4]);
 
   return (
     <figure
       className="case-shot"
       ref={figureRef}
-      style={video ? { "--case-poster": `url(${image})` } : undefined}
+      style={mp4 ? { "--case-poster": `url(${poster})` } : undefined}
     >
-      {video ? (
+      {mp4 ? (
         <video
           ref={videoRef}
           className="case-shot-media"
-          poster={image}
+          poster={poster}
           muted
           loop
           playsInline
           preload="metadata"
           aria-label={label}
         >
-          <source src={video} type="video/mp4" />
-          {videoWebm ? <source src={videoWebm} type="video/webm" /> : null}
+          <source src={mp4} type="video/mp4" />
+          {webm ? <source src={webm} type="video/webm" /> : null}
         </video>
       ) : (
-        <img className="case-shot-media" src={image} alt={label} loading="lazy" />
+        <img className="case-shot-media" src={poster} alt={label} loading="lazy" />
       )}
     </figure>
   );
