@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useMemo } from "react";
+import { siteConfig } from "../siteConfig";
 import en from "./locales/en";
 
 const I18nContext = createContext(null);
@@ -10,6 +11,11 @@ export function I18nProvider({ children }) {
     document.documentElement.lang = "en";
     document.title = en.meta.title;
     document.querySelector('meta[name="description"]')?.setAttribute("content", en.meta.description);
+    document.querySelector('meta[property="og:title"]')?.setAttribute("content", en.meta.ogTitle);
+    document
+      .querySelector('meta[property="og:description"]')
+      ?.setAttribute("content", en.meta.ogDescription);
+    document.querySelector('link[rel="canonical"]')?.setAttribute("href", siteConfig.url);
   }, []);
 
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;

@@ -1,6 +1,8 @@
-# Software website
+# Formware website
 
-One-page B2B product studio website built with React, Vite and Three.js.
+One-page B2B product studio site for Formware — 3D configurators, calculators and focused business software for manufacturers.
+
+Stack: React, Vite, Three.js, GSAP.
 
 ## Run locally
 
@@ -15,11 +17,20 @@ npm run dev
 npm run build
 ```
 
-The compiled site is written to `dist/`. Assets use relative paths, so the build can also be reviewed by opening `dist/index.html` directly.
+## Contact form
+
+Set a real endpoint before launch:
+
+```bash
+# .env
+VITE_CONTACT_ENDPOINT=https://your-form-endpoint.example/api
+```
+
+If the endpoint is missing, the contact block shows an email fallback from `src/siteConfig.js` (leave email empty until a real address is available — do not invent one).
 
 ## Before launch
 
-- Replace the Software name, email address and legal details when the final brand is selected.
-- Replace or supplement the interface mockups with approved project footage and verified case results.
-- Connect the contact form to the chosen email, CRM or form endpoint.
-- Add privacy policy, imprint and consent behavior required for the target EU market.
+- Confirm final brand name in `src/siteConfig.js` (currently **Formware** as working title).
+- Add real contact email in `siteConfig.email`.
+- Connect `VITE_CONTACT_ENDPOINT`.
+- Replace privacy / imprint placeholders with real EU legal pages.

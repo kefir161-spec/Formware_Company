@@ -1,5 +1,5 @@
 {
-  "name": "software-site",
+  "name": "formware-site",
   "private": true,
   "version": "0.1.0",
   "type": "module",
@@ -9,13 +9,14 @@
     "preview": "vite preview --host 0.0.0.0"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "@vitejs/plugin-react": "latest",
-    "vite": "latest",
-    "typescript": "latest",
+    "gsap": "^3.15.0",
+    "lucide-react": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "lucide-react": "latest",
-    "three": "latest"
-  },
-  "devDependencies": {}
+    "three": "latest",
+    "typescript": "latest",
+    "vite": "latest"
+  }
 }
