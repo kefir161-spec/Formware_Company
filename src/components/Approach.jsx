@@ -1,22 +1,5 @@
 import React from "react";
-import { ArrowRight } from "lucide-react";
 import { useI18n } from "../i18n";
-
-export function MarketValidationCard() {
-  const { t } = useI18n();
-  return (
-    <aside className="market-card">
-      <div>
-        <h3>{t.market.title}</h3>
-        <p>{t.market.text}</p>
-        <p className="market-note">{t.market.note}</p>
-      </div>
-      <a className="button button-dark" href="#contact">
-        {t.market.cta} <ArrowRight size={16} aria-hidden="true" />
-      </a>
-    </aside>
-  );
-}
 
 export default function Approach() {
   const { t } = useI18n();
@@ -44,13 +27,9 @@ export default function Approach() {
         ))}
       </ol>
 
-      <ul className="approach-pillars">
-        {t.approach.pillars.map((item) => (
-          <li key={item}>{item}</li>
-        ))}
-      </ul>
-
-      <MarketValidationCard />
+      <a className="market-link" href={t.market.href}>
+        {t.market.link}
+      </a>
     </section>
   );
 }

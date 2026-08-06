@@ -185,7 +185,7 @@ export default function Workflow() {
   const reduced = useReducedMotion();
   const sectionRef = useRef(null);
   const stageRefs = useRef([]);
-  const inView = useInView(sectionRef, { threshold: 0.22, once: true });
+  const inView = useInView(sectionRef, { threshold: 0.15, once: true });
   const baseId = useId();
 
   const [active, setActive] = useState(0);

@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-import { ArrowRight } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -152,7 +151,7 @@ function CubikCase({ data, localeNote }) {
             ))}
           </ul>
           <a className="button button-primary" href={data.href} target="_blank" rel="noopener noreferrer">
-            {data.link} <ArrowRight size={18} aria-hidden="true" />
+            {data.link}
           </a>
         </div>
       </div>

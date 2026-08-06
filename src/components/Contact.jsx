@@ -1,46 +1,65 @@
 import React, { useState } from "react";
-import { ArrowRight, Send } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useI18n } from "../i18n";
 import { siteConfig } from "../siteConfig";
 
-const ENDPOINT = import.meta.env.VITE_CONTACT_ENDPOINT || "";
+const FORMSUBMIT_FALLBACK = "https://formsubmit.co/ajax/kefir161@gmail.com";
+const ENDPOINT = import.meta.env.VITE_CONTACT_ENDPOINT || FORMSUBMIT_FALLBACK;
+const CONTACT_EMAIL = siteConfig.email || "kefir161@gmail.com";
 
 export default function Contact() {
   const { t } = useI18n();
   const [status, setStatus] = useState("idle"); // idle | loading | success | error
-  const [errorMsg, setErrorMsg] = useState("");
-
-  const hasEndpoint = Boolean(ENDPOINT);
-  const hasEmail = Boolean(siteConfig.email);
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    if (!hasEndpoint) return;
+    if (status === "loading") return;
 
     const form = event.currentTarget;
-    const data = {
-      name: form.name.value.trim(),
-      email: form.email.value.trim(),
-      message: form.message.value.trim(),
-      source: siteConfig.name,
+    const honeypot = form.elements.namedItem("_honey");
+    if (honeypot && String(honeypot.value || "").trim()) {
+      setStatus("success");
+      form.reset();
+      return;
+    }
+
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const company = form.company.value.trim();
+    const message = form.message.value.trim();
+
+    const payload = {
+      name,
+      email,
+      company,
+      message,
+      _subject: "New Formware project inquiry",
+      _template: "table",
+      _replyto: email,
+      _url: siteConfig.url,
+      _honey: "",
     };
 
     setStatus("loading");
-    setErrorMsg("");
 
     try {
       const res = await fetch(ENDPOINT, {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
       });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      if (!res.ok) throw new Error("submit_failed");
+      const data = await res.json().catch(() => ({}));
+      if (data.success === false || data.success === "false") {
+        throw new Error("submit_failed");
+      }
       setStatus("success");
       form.reset();
-    } catch (err) {
+    } catch {
       setStatus("error");
-      setErrorMsg(t.contact.error);
-      console.error(err);
     }
   };
 
@@ -51,24 +70,31 @@ export default function Contact() {
           <p className="section-kicker mono">{t.contact.kicker}</p>
           <h2>{t.contact.title}</h2>
           <p>{t.contact.lead}</p>
-          {hasEmail ? (
-            <a href={`mailto:${siteConfig.email}`}>
-              {siteConfig.email} <ArrowRight size={17} aria-hidden="true" />
-            </a>
-          ) : null}
+          <a href={`mailto:${CONTACT_EMAIL}`}>
+            {CONTACT_EMAIL} <ArrowRight size={17} aria-hidden="true" />
+          </a>
         </div>
 
         <div className="contact-form-wrap">
           {status === "success" ? (
             <div className="form-success" role="status">
-              <h3>{t.contact.success.title}</h3>
-              <p>{t.contact.success.text}</p>
+              <span className="form-success-dot" aria-hidden="true" />
+              <p className="form-success-title">{t.contact.success.title}</p>
               <button type="button" onClick={() => setStatus("idle")}>
                 {t.contact.success.again}
               </button>
             </div>
-          ) : hasEndpoint ? (
+          ) : (
             <form className="contact-form" onSubmit={onSubmit} noValidate={false}>
+              <label className="visually-hidden" aria-hidden="true">
+                <span>Do not fill</span>
+                <input
+                  type="text"
+                  name="_honey"
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+              </label>
               <label>
                 <span>{t.contact.form.name}</span>
                 <input
@@ -76,6 +102,7 @@ export default function Contact() {
                   required
                   autoComplete="name"
                   placeholder={t.contact.form.namePlaceholder}
+                  disabled={status === "loading"}
                 />
               </label>
               <label>
@@ -86,6 +113,16 @@ export default function Contact() {
                   type="email"
                   autoComplete="email"
                   placeholder={t.contact.form.emailPlaceholder}
+                  disabled={status === "loading"}
+                />
+              </label>
+              <label className="full">
+                <span>{t.contact.form.company}</span>
+                <input
+                  name="company"
+                  autoComplete="organization"
+                  placeholder={t.contact.form.companyPlaceholder}
+                  disabled={status === "loading"}
                 />
               </label>
               <label className="full">
@@ -95,6 +132,7 @@ export default function Contact() {
                   required
                   rows={4}
                   placeholder={t.contact.form.messagePlaceholder}
+                  disabled={status === "loading"}
                 />
               </label>
               <button
@@ -103,33 +141,15 @@ export default function Contact() {
                 disabled={status === "loading"}
               >
                 {status === "loading" ? t.contact.form.sending : t.contact.form.submit}
-                <Send size={17} aria-hidden="true" />
               </button>
               <small>{t.contact.form.consent}</small>
               {status === "error" ? (
                 <p className="form-error" role="alert">
-                  {errorMsg}
-                  {hasEmail ? (
-                    <>
-                      {" "}
-                      <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
-                    </>
-                  ) : null}
+                  {t.contact.error}{" "}
+                  <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
                 </p>
               ) : null}
             </form>
-          ) : (
-            <div className="form-fallback" role="status">
-              <h3>{t.contact.fallback.title}</h3>
-              <p>{t.contact.fallback.text}</p>
-              {hasEmail ? (
-                <a className="button button-accent" href={`mailto:${siteConfig.email}`}>
-                  {siteConfig.email} <ArrowRight size={17} aria-hidden="true" />
-                </a>
-              ) : (
-                <p className="form-fallback-note">{t.contact.fallback.noEmail}</p>
-              )}
-            </div>
           )}
         </div>
       </div>
