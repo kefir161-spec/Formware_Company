@@ -91,24 +91,24 @@ export default {
         eyebrow: "01",
         title: "3D configurators.",
         text: "Interactive product configuration for complex ranges.",
-        image: "/images/capabilities/configure-visualize.webp",
-        alt: "Exploded configurable industrial assembly",
+        image: "/images/capabilities/configure-visualize.png",
+        alt: "3D motor configurator with swappable flanges and color options",
       },
       {
         id: "calculate",
         eyebrow: "02",
         title: "Calculators & quoting.",
         text: "Rules, quantities, pricing and quote-ready outputs.",
-        image: "/images/capabilities/calculate-quote.webp",
-        alt: "Product components arranged as a technical BOM",
+        image: "/images/capabilities/calculate-quote.png",
+        alt: "Product quote with dimensions, price and quantity breakdown",
       },
       {
         id: "operations",
         eyebrow: "03",
         title: "Internal systems.",
         text: "Focused tools for orders, documents, roles and approvals.",
-        image: "/images/capabilities/run-workflow.webp",
-        alt: "Industrial component moving through an approval workflow",
+        image: "/images/capabilities/run-workflow.png",
+        alt: "Order workflow from intake through engineering, approval and production",
       },
     ],
   },
@@ -125,7 +125,6 @@ export default {
       brand: "FORMWARE / OPS",
       eyebrow: "OPERATIONS / ORDER #2048",
       orderTitle: "Entrance protection · 12 units",
-      dossierId: "#2048",
       nav: [
         { id: "orders", label: "Orders" },
         { id: "projects", label: "Projects" },
@@ -191,6 +190,7 @@ export default {
       },
       production: {
         ready: "READY",
+        docsLabel: "Package",
         meta: [
           { label: "Drawing", value: "Released" },
           { label: "Specification", value: "Ready" },
@@ -203,7 +203,6 @@ export default {
       "ONE SOURCE OF DATA",
       "ROLE-BASED ACCESS",
       "APPROVAL HISTORY",
-      "EU CLOUD / ON-PREMISE",
     ],
   },
   approach: {
@@ -224,6 +223,11 @@ export default {
     kicker: "CONTACT",
     title: "What is slowing you down?",
     lead: "Tell us about the product, the process or the idea. We will come back with useful questions — and a practical next step.",
+    channels: {
+      email: "Email",
+      telegram: "Telegram",
+      telegramAction: "Write on Telegram",
+    },
     form: {
       name: "Name",
       namePlaceholder: "Your name",

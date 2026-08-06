@@ -7,6 +7,9 @@ export const siteConfig = {
   tagline: "3D Configurators & Digital Sales Tools for Manufacturers",
   url: "https://kefir161-spec.github.io/Formware_Company/",
   email: "kefir161@gmail.com",
+  telegram: {
+    href: "https://t.me/Kefir161",
+  },
   region: "Europe · 2026",
   social: {
     // Add real profiles when available

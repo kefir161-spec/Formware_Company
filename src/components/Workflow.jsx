@@ -165,16 +165,19 @@ function StageContent({ stage, copy, reduced }) {
         </div>
       </article>
       <aside className="ops-doc-stack" data-stagger="3">
-        {production.docs.map((doc, index) => (
-          <div
-            key={doc}
-            className="ops-stack-item"
-            style={{ "--ops-stack-i": index }}
-            data-stagger={index + 1}
-          >
-            <DocThumb label={doc} />
-          </div>
-        ))}
+        <p className="mono ops-panel-label">{production.docsLabel}</p>
+        <div className="ops-doc-row">
+          {production.docs.map((doc, index) => (
+            <div
+              key={doc}
+              className="ops-stack-item"
+              style={{ "--ops-stack-i": index }}
+              data-stagger={index + 1}
+            >
+              <DocThumb label={doc} />
+            </div>
+          ))}
+        </div>
       </aside>
     </div>
   );
@@ -194,7 +197,6 @@ export default function Workflow() {
   const [phase, setPhase] = useState("in");
   const [userLocked, setUserLocked] = useState(false);
   const [statusReady, setStatusReady] = useState(true);
-  const autoDoneRef = useRef(false);
   const mountedRef = useRef(false);
 
   const copy = t.workflow;
@@ -203,10 +205,7 @@ export default function Workflow() {
   const displayStage = stages[displayStep];
 
   const selectStep = (index, fromUser = false) => {
-    if (fromUser) {
-      setUserLocked(true);
-      autoDoneRef.current = true;
-    }
+    if (fromUser) setUserLocked(true);
     setActive(index);
   };
 
@@ -248,27 +247,13 @@ export default function Workflow() {
   }, [active, reduced]);
 
   useEffect(() => {
-    if (!inView || reduced || userLocked || autoDoneRef.current) return undefined;
+    if (!inView || reduced || userLocked) return undefined;
 
-    let step = 0;
-    const timers = [];
+    const timer = window.setInterval(() => {
+      setActive((current) => (current + 1) % stages.length);
+    }, AUTO_STEP_MS);
 
-    const schedule = () => {
-      if (step >= stages.length - 1) {
-        autoDoneRef.current = true;
-        return;
-      }
-      timers.push(
-        window.setTimeout(() => {
-          step += 1;
-          setActive(step);
-          schedule();
-        }, AUTO_STEP_MS),
-      );
-    };
-
-    schedule();
-    return () => timers.forEach((id) => window.clearTimeout(id));
+    return () => window.clearInterval(timer);
   }, [inView, reduced, userLocked, stages.length]);
 
   const onStageKeyDown = (event, index) => {
@@ -289,7 +274,6 @@ export default function Workflow() {
   };
 
   const progressPct = (active / (stages.length - 1)) * 100;
-  const dossierLeft = `${12.5 + (active / (stages.length - 1)) * 75}%`;
   const statusTone =
     statusStage.id === "production" || statusStage.id === "approval"
       ? "is-success"
@@ -348,14 +332,6 @@ export default function Workflow() {
                   className="ops-track-progress"
                   style={{ width: `${progressPct}%` }}
                 />
-              </div>
-
-              <div
-                className={`ops-dossier${reduced ? " is-reduced" : ""}`}
-                aria-hidden="true"
-                style={{ left: dossierLeft }}
-              >
-                <span className="mono">{copy.app.dossierId}</span>
               </div>
 
               {stages.map((stage, index) => {

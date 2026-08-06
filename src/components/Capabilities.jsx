@@ -17,11 +17,11 @@ function CapabilityCard({ card, index, reduced, visible }) {
       const rect = cardEl.getBoundingClientRect();
       const x = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
       const y = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
-      media.style.transform = `translate(calc(-50% + ${x * 4}px), ${y * 3}px) scale(1.035)`;
+      media.style.transform = `translate(${x * 5}px, ${y * 4}px) scale(1.03)`;
     };
 
     const onLeave = () => {
-      media.style.transform = "translate(-50%, 0) scale(1)";
+      media.style.transform = "translate(0, 0) scale(1)";
     };
 
     cardEl.addEventListener("pointermove", onMove);
@@ -49,8 +49,8 @@ function CapabilityCard({ card, index, reduced, visible }) {
           alt={card.alt}
           loading="lazy"
           decoding="async"
-          width={800}
-          height={800}
+          width={1024}
+          height={640}
         />
       </div>
     </article>
