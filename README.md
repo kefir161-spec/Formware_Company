@@ -1,6 +1,6 @@
-# Formware website
+# ALT BUREAU website
 
-One-page B2B product studio site for Formware — 3D configurators, calculators and focused business software for manufacturers.
+One-page B2B product studio site for ALT BUREAU — 3D configurators, calculators and focused business software for manufacturers.
 
 Stack: React, Vite, Three.js, GSAP.
 
@@ -30,7 +30,6 @@ If the endpoint is missing, the contact block shows an email fallback from `src/
 
 ## Before launch
 
-- Confirm final brand name in `src/siteConfig.js` (currently **Formware** as working title).
 - Add real contact email in `siteConfig.email`.
 - Connect `VITE_CONTACT_ENDPOINT`.
 - Replace privacy / imprint placeholders with real EU legal pages.

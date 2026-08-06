@@ -1,5 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Formware">
-  <rect width="64" height="64" rx="14" fill="#11120F"/>
-  <path d="M18 16h28v8H28v8h16v8H28v12H18V16z" fill="#F3F3EF"/>
-  <rect x="40" y="40" width="10" height="10" rx="2" fill="#315CFF"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="ALT BUREAU">
+  <title>ALT BUREAU</title>
+  <path
+    fill="#11120F"
+    fill-rule="evenodd"
+    d="M2 30 L16 2 L30 30 H21.6 L19.2 23.2 H12.8 L10.4 30 H2 Z M13.6 19.2 H18.4 L16 12.4 Z"
+  />
+  <path fill="#315CFF" d="M2 30 L16 2 H19.2 L8.2 30 Z"/>
+  <path fill="#11120F" d="M12.8 19.2 H19.2 V23.2 H12.8 Z"/>
 </svg>

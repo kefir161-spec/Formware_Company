@@ -52,7 +52,7 @@ export default function Contact() {
       email,
       company,
       message,
-      _subject: "New Formware project inquiry",
+      _subject: "New ALT BUREAU project inquiry",
       _template: "table",
       _replyto: email,
       _url: siteConfig.url,

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 254 48" fill="none" role="img" aria-label="ALT BUREAU">
+  <title>ALT BUREAU</title>
+  <g aria-hidden="true">
+    <!-- A body (near-black) with open triangular counter -->
+    <path
+      fill="#11120F"
+      fill-rule="evenodd"
+      d="M2 45 L19 2.5 L36 45 H26.8 L23.6 35.2 H14.4 L11.2 45 H2 Z M15.6 29.6 H22.4 L19 19.2 Z"
+    />
+    <!-- A: cobalt left diagonal overlaid, then crossbar restored in near-black -->
+    <path fill="#315CFF" d="M2 45 L19 2.5 H22.8 L9.4 45 Z"/>
+    <path fill="#11120F" d="M14.4 29.6 H23.6 V35.2 H14.4 Z"/>
+    <!-- L -->
+    <path fill="#11120F" d="M42.5 2.5 H50.8 V37.2 H66.5 V45 H42.5 Z"/>
+    <!-- T -->
+    <path fill="#11120F" d="M71 2.5 H103.5 V10.2 H91.8 V45 H82.5 V10.2 H71 Z"/>
+
+    <!-- BUREAU — lighter, ~40% height, wide tracking, shared baseline -->
+    <g fill="#11120F">
+      <path d="M116 28.2h6.6c3.5 0 5.7 1.9 5.7 4.6 0 2-1.2 3.4-3.1 4 2.4.5 4.1 2.2 4.1 4.6 0 3-2.6 5-6.9 5H116V28.2zm3.8 3v4h2.6c1.5 0 2.3-.8 2.3-2s-.8-2-2.3-2h-2.6zm0 6.8v5.2h2.9c1.7 0 2.7-1 2.7-2.6s-1-2.6-2.7-2.6h-2.9z"/>
+      <path d="M137.2 28.2h3.8v11.8c0 2.4 1.5 3.7 3.7 3.7s3.7-1.3 3.7-3.7V28.2h3.8v12c0 4.5-3 6.4-7.5 6.4s-7.5-1.9-7.5-6.4v-12z"/>
+      <path d="M160.2 28.2h7.2c3.9 0 6.3 2.2 6.3 5.5 0 2.8-1.7 4.7-4.4 5.3L175.6 45h-4.2l-4.5-7.4h-2.9V45h-3.8V28.2zm3.8 3v5h3.3c1.7 0 2.7-1 2.7-2.5s-1-2.5-2.7-2.5h-3.3z"/>
+      <path d="M182.8 28.2h13.2v3.1h-9.4v4.6h7.8v3h-7.8v4.9h9.7V45h-13.5V28.2z"/>
+      <path d="M204.2 45l6.6-16.8h4l6.6 16.8h-4l-1.5-4.6h-6.2L209 45h-4.8zm6.6-7.8h4l-2-6-2 6z"/>
+      <path d="M228.4 28.2h3.8v11.8c0 2.4 1.5 3.7 3.7 3.7s3.7-1.3 3.7-3.7V28.2h3.8v12c0 4.5-3 6.4-7.5 6.4s-7.5-1.9-7.5-6.4v-12z"/>
+    </g>
+  </g>
+</svg>

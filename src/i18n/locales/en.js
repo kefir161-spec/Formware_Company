@@ -2,10 +2,10 @@ import { siteConfig } from "../../siteConfig";
 
 export default {
   meta: {
-    title: "Formware — 3D Configurators & Digital Sales Tools for Manufacturers",
+    title: "ALT BUREAU — 3D Configurators & Digital Sales Tools for Manufacturers",
     description:
       "We turn complex products into clear digital tools — 3D configurators, calculators and focused business software for manufacturers.",
-    ogTitle: "Formware — 3D Configurators & Digital Sales Tools for Manufacturers",
+    ogTitle: "ALT BUREAU — 3D Configurators & Digital Sales Tools for Manufacturers",
     ogDescription: "We turn complex products into clear digital tools for manufacturers.",
   },
   a11y: {
@@ -122,7 +122,7 @@ export default {
       upcoming: "Upcoming stage",
     },
     app: {
-      brand: "FORMWARE / OPS",
+      brand: "ALT BUREAU / OPS",
       eyebrow: "OPERATIONS / ORDER #2048",
       orderTitle: "Entrance protection · 12 units",
       nav: [

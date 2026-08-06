@@ -1,9 +1,9 @@
 /**
  * Single source for brand identity and primary links.
- * Replace name / email / legal placeholders when final brand details are ready.
+ * Replace email / legal placeholders when final details are ready.
  */
 export const siteConfig = {
-  name: "Formware",
+  name: "ALT BUREAU",
   tagline: "3D Configurators & Digital Sales Tools for Manufacturers",
   url: "https://kefir161-spec.github.io/Formware_Company/",
   email: "kefir161@gmail.com",

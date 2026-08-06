@@ -115,21 +115,26 @@ video {
 .footer-brand {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  font-size: 14px;
-  font-weight: 800;
+  line-height: 0;
 }
 
-.mark {
-  display: inline-grid;
-  place-items: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 8px;
-  color: var(--white);
-  background: var(--ink);
-  font-size: 13px;
-  font-weight: 800;
+.wordmark-logo {
+  display: block;
+  height: 22px;
+  width: auto;
+  max-width: min(160px, 48vw);
+}
+
+.footer-brand .wordmark-logo {
+  height: 20px;
+  max-width: 148px;
+}
+
+@media (max-width: 820px) {
+  .wordmark-logo {
+    height: 18px;
+    max-width: min(140px, 52vw);
+  }
 }
 
 .main-nav {

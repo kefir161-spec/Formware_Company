@@ -1,6 +1,7 @@
 import React from "react";
 import { useI18n } from "../i18n";
 import { siteConfig } from "../siteConfig";
+import { assetUrl } from "../lib/assetUrl";
 
 export default function Footer() {
   const { t } = useI18n();
@@ -8,10 +9,14 @@ export default function Footer() {
   return (
     <footer className="site-footer">
       <div className="footer-brand">
-        <span className="mark" aria-hidden="true">
-          F
-        </span>
-        <strong>{siteConfig.name}</strong>
+        <img
+          className="wordmark-logo"
+          src={assetUrl("brand/alt-bureau.svg")}
+          alt={siteConfig.name}
+          width="148"
+          height="24"
+          decoding="async"
+        />
       </div>
       <p>{t.footer.tagline}</p>
       <nav aria-label="Footer">

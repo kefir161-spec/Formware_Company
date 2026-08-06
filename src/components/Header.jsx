@@ -1,7 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ArrowRight, Menu, X } from "lucide-react";
 import { useI18n } from "../i18n";
 import { siteConfig } from "../siteConfig";
+import { assetUrl } from "../lib/assetUrl";
 
 export default function Header() {
   const { t } = useI18n();
@@ -26,10 +27,14 @@ export default function Header() {
   return (
     <header className={`site-header${scrolled ? " is-scrolled" : ""}`}>
       <a href="#top" className="wordmark" onClick={close} aria-label={t.a11y.home}>
-        <span className="mark" aria-hidden="true">
-          F
-        </span>
-        <span>{siteConfig.name}</span>
+        <img
+          className="wordmark-logo"
+          src={assetUrl("brand/alt-bureau.svg")}
+          alt=""
+          width="168"
+          height="28"
+          decoding="async"
+        />
       </a>
 
       <div className="header-actions">
