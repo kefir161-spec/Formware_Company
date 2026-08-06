@@ -16,8 +16,8 @@ export default {
     capabilities: "Capabilities",
     heroScene: "Interactive modular product scene",
     heroSceneFallback: "Product illustration",
-    workflowDiagram: "Product workflow from configure to order",
-    workflowTabs: "Workflow stages",
+    workflowDiagram: "Internal operations system showing an order moving through departments",
+    workflowTabs: "Order workflow stages",
     skipToContent: "Skip to content",
   },
   nav: {
@@ -117,77 +117,98 @@ export default {
     ],
   },
   workflow: {
-    kicker: "FROM FRICTION TO WORKFLOW",
-    title: "One product flow. No spreadsheet loop.",
-    problems: [
-      "Invalid configurations still get quoted",
-      "Every option change sends the team back to Excel",
-      "Pricing, documents and order status live in different places",
-      "Product knowledge lives in people, not in the system",
-    ],
+    kicker: "[ INTERNAL SYSTEMS ]",
+    title: "Your workflow. Your software.",
+    lead: "Focused internal tools built around your data, roles and approvals — without the overhead of a full CRM or ERP.",
+    a11y: {
+      active: "Current stage",
+      completed: "Completed stage",
+      upcoming: "Upcoming stage",
+    },
+    app: {
+      brand: "FORMWARE / OPS",
+      eyebrow: "OPERATIONS / ORDER #2048",
+      orderTitle: "Entrance protection · 12 units",
+      dossierId: "#2048",
+      nav: [
+        { id: "orders", label: "Orders" },
+        { id: "projects", label: "Projects" },
+        { id: "documents", label: "Documents" },
+        { id: "production", label: "Production" },
+      ],
+    },
     pipeline: [
       {
-        id: "configure",
-        label: "Configure",
-        title: "Set the product once.",
+        id: "sales",
+        label: "Sales",
+        statusLabel: "IN PROGRESS",
+        headline: "ORDER CREATED",
       },
       {
-        id: "validate",
-        label: "Validate",
-        title: "Invalid options stop here.",
+        id: "engineering",
+        label: "Engineering",
+        statusLabel: "IN PROGRESS",
+        headline: "ENGINEERING CHECKED",
       },
       {
-        id: "price",
-        label: "Price / BOM",
-        title: "Every choice updates the numbers.",
+        id: "approval",
+        label: "Approval",
+        statusLabel: "APPROVED",
+        headline: "APPROVED",
       },
       {
-        id: "quote",
-        label: "Quote / Order",
-        title: "Approved data becomes an order.",
+        id: "production",
+        label: "Production",
+        statusLabel: "READY FOR PRODUCTION",
+        headline: "READY FOR PRODUCTION",
       },
     ],
-    configure: {
-      size: "2400 × 2100 mm",
-      material: "Oak",
-      modules: "8 modules",
-      controls: {
-        size: "Dimensions",
-        material: "Material",
-        modules: "Modules",
+    stages: {
+      sales: {
+        orderId: "ORDER #2048",
+        badge: "NEW",
+        fields: [
+          { label: "Product", value: "Entrance protection" },
+          { label: "Quantity", value: "12 units" },
+          { label: "Due date", value: "18 Sep" },
+          { label: "Owner", value: "Sales" },
+        ],
+        docs: ["Request", "Reference"],
+      },
+      engineering: {
+        drawingLabel: "Drawing preview",
+        meta: [
+          { label: "Drawing", value: "REV B" },
+          { label: "Specification", value: "Generated" },
+          { label: "Product rules", value: "12 / 12 passed" },
+        ],
+      },
+      approval: {
+        matrixLabel: "Approvals",
+        approvedLabel: "Approved",
+        parties: ["Sales", "Engineering", "Customer"],
+        meta: [
+          { label: "Documents", value: "2 attached" },
+          { label: "Revision", value: "B" },
+          { label: "Updated", value: "Today" },
+        ],
+      },
+      production: {
+        ready: "READY",
+        meta: [
+          { label: "Drawing", value: "Released" },
+          { label: "Specification", value: "Ready" },
+          { label: "Order data", value: "Synced" },
+        ],
+        docs: ["DRAWING", "SPEC", "ORDER"],
       },
     },
-    validate: {
-      checks: [
-        { label: "Dimensions", status: "PASS" },
-        { label: "Module compatibility", status: "PASS" },
-        { label: "Load limit", status: "PASS" },
-        { label: "Material availability", status: "BLOCKED" },
-      ],
-      result: "VALID CONFIGURATION",
-    },
-    price: {
-      bom: [
-        { name: "Frames", qty: 4 },
-        { name: "Panels", qty: 8 },
-        { name: "Shelves", qty: 2 },
-      ],
-      totals: [
-        { id: "items", value: 12, suffix: " items", decimals: 0 },
-        { id: "weight", value: 48.6, suffix: " kg", decimals: 1 },
-        { id: "price", value: 2840, prefix: "€", suffix: "", decimals: 0, locale: true },
-      ],
-    },
-    quote: {
-      quote: "QUOTE #2048",
-      pdf: "PDF",
-      bom: "BOM",
-      order: "ORDER READY",
-    },
-    strip: {
-      text: "Focused software built around your workflow — without replacing your entire ERP.",
-      points: ["YOUR RULES", "YOUR PERMISSIONS", "EU CLOUD OR ON-PREMISE"],
-    },
+    proof: [
+      "ONE SOURCE OF DATA",
+      "ROLE-BASED ACCESS",
+      "APPROVAL HISTORY",
+      "EU CLOUD / ON-PREMISE",
+    ],
   },
   approach: {
     kicker: "APPROACH",
