@@ -32,5 +32,7 @@ export const siteConfig = {
     aluminum: "https://kefir161-spec.github.io/aluminum-mudguard/",
     flooring: "https://kefir161-spec.github.io/modular-floor-calculator/",
     cubik: "https://qubik.one/builder/",
+    stroyzhurnal: "https://github.com/kefir161-spec/construction-work-log",
+    cubikCore: "https://github.com/kefir161-spec/cubik-core-public",
   },
 };

@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
-    "preview": "vite preview --host 0.0.0.0"
+    "preview": "vite preview --host 0.0.0.0",
+    "record:stroy": "node scripts/record-demo.mjs stroy",
+    "record:cubik": "node scripts/record-demo.mjs cubik"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
@@ -18,5 +20,8 @@
     "three": "latest",
     "typescript": "latest",
     "vite": "latest"
+  },
+  "devDependencies": {
+    "playwright": "^1.62.1"
   }
 }

@@ -8,7 +8,7 @@ import CaseMedia from "./CaseMedia";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-function PlastFactorCase({ data }) {
+function DualProductCase({ data }) {
   const ref = useRef(null);
   const reduced = useReducedMotion();
 
@@ -47,38 +47,45 @@ function PlastFactorCase({ data }) {
       </header>
 
       <div className="case-plastfactor-products">
-        {data.products.map((product) => (
-          <article className="pf-product" key={product.title}>
-            <p className="pf-status mono">
-              {product.status} ·{" "}
-              <span className="pf-live">
-                <i aria-hidden="true" />
-                LIVE
-              </span>
-            </p>
-            <a
-              className="pf-shot"
-              href={product.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={product.link}
-            >
-              <CaseMedia
-                image={product.image}
-                video={product.video}
-                videoWebm={product.videoWebm}
-                title={product.title}
-              />
-            </a>
-            <div className="pf-product-meta">
-              <h4>{product.title}</h4>
-              <p>{product.text}</p>
-              <a className="pf-cta" href={product.href} target="_blank" rel="noopener noreferrer">
-                {product.link}
+        {data.products.map((product) => {
+          const showLive = product.live !== false;
+          return (
+            <article className="pf-product" key={product.title}>
+              <p className="pf-status mono">
+                {product.status} ·{" "}
+                {showLive ? (
+                  <span className="pf-live">
+                    <i aria-hidden="true" />
+                    LIVE
+                  </span>
+                ) : (
+                  <span className="pf-badge">{product.badge || "CODE"}</span>
+                )}
+              </p>
+              <a
+                className="pf-shot"
+                href={product.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={product.link}
+              >
+                <CaseMedia
+                  image={product.image}
+                  video={product.video}
+                  videoWebm={product.videoWebm}
+                  title={product.title}
+                />
               </a>
-            </div>
-          </article>
-        ))}
+              <div className="pf-product-meta">
+                <h4>{product.title}</h4>
+                <p>{product.text}</p>
+                <a className="pf-cta" href={product.href} target="_blank" rel="noopener noreferrer">
+                  {product.link}
+                </a>
+              </div>
+            </article>
+          );
+        })}
       </div>
     </article>
   );
@@ -168,7 +175,8 @@ export default function SelectedWork() {
         <p className="section-kicker mono">[ {t.work.kicker} ]</p>
         <h2>{t.work.title}</h2>
       </div>
-      <PlastFactorCase data={t.work.plastfactor} />
+      <DualProductCase data={t.work.plastfactor} />
+      <DualProductCase data={t.work.systems} />
       <CubikCase data={t.work.cubik} localeNote={t.work.localeNote} />
     </section>
   );
