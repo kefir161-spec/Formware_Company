@@ -60,7 +60,11 @@ export function PrivacyPage() {
       ))}
       <p>
         {p.contactLead}{" "}
-        <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+        {siteConfig.telegram?.href ? (
+          <a href={siteConfig.telegram.href} target="_blank" rel="noopener noreferrer">
+            {siteConfig.telegram.href.replace("https://", "")}
+          </a>
+        ) : null}
       </p>
     </LegalShell>
   );
@@ -110,10 +114,6 @@ export function ImprintPage() {
 
       <section>
         <h2>{im.contactHeading}</h2>
-        <p>
-          {im.emailLabel}:{" "}
-          <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
-        </p>
         {siteConfig.telegram?.href ? (
           <p>
             {im.telegramLabel}:{" "}

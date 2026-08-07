@@ -5,7 +5,6 @@ import { siteConfig } from "../siteConfig";
 
 const FORMSUBMIT_FALLBACK = "https://formsubmit.co/ajax/kefir161@gmail.com";
 const ENDPOINT = import.meta.env.VITE_CONTACT_ENDPOINT || FORMSUBMIT_FALLBACK;
-const CONTACT_EMAIL = siteConfig.email || "kefir161@gmail.com";
 const TELEGRAM_HREF = siteConfig.telegram?.href;
 
 function TelegramIcon() {
@@ -90,19 +89,8 @@ export default function Contact() {
           <h2>{t.contact.title}</h2>
           <p>{t.contact.lead}</p>
 
-          <ul className="contact-channels">
-            <li>
-              <a className="contact-channel" href={`mailto:${CONTACT_EMAIL}`}>
-                <span className="contact-channel-meta">
-                  <span className="mono contact-channel-label">
-                    {t.contact.channels.email}
-                  </span>
-                  <span className="contact-channel-value">{CONTACT_EMAIL}</span>
-                </span>
-                <ArrowRight size={17} aria-hidden="true" />
-              </a>
-            </li>
-            {TELEGRAM_HREF ? (
+          {TELEGRAM_HREF ? (
+            <ul className="contact-channels">
               <li>
                 <a
                   className="contact-channel"
@@ -122,8 +110,8 @@ export default function Contact() {
                   <ArrowRight size={17} aria-hidden="true" />
                 </a>
               </li>
-            ) : null}
-          </ul>
+            </ul>
+          ) : null}
         </div>
 
         <div className="contact-form-wrap">
@@ -197,19 +185,14 @@ export default function Contact() {
               {status === "error" ? (
                 <p className="form-error" role="alert">
                   {t.contact.error}{" "}
-                  <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
                   {TELEGRAM_HREF ? (
-                    <>
-                      {" "}
-                      ·{" "}
-                      <a
-                        href={TELEGRAM_HREF}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {t.contact.channels.telegram}
-                      </a>
-                    </>
+                    <a
+                      href={TELEGRAM_HREF}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {t.contact.channels.telegram}
+                    </a>
                   ) : null}
                 </p>
               ) : null}

@@ -109,8 +109,8 @@ export default {
       client: "Cubik",
       title: "A 3D builder people actually order from",
       summary: "Build, price and save configurable products directly in the browser.",
-      proof: "5 shop SKUs · 5 colors · JSON / GLB / PDF export",
-      impact: "+25% configure-to-order conversion · Live price in cart",
+      proof: "5 base Cubiks · 100s of face variants · Free-form 3D builds",
+      impact: "Live pricing · Build-to-order · Direct purchase",
       features: [
         { title: "Build in 3D", text: "Parametric assembly with product rules." },
         { title: "Price as you go", text: "Live pricing as the configuration changes." },
@@ -286,7 +286,7 @@ export default {
       title: "Thanks. We’ll get back to you shortly.",
       again: "Send another message",
     },
-    error: "Couldn’t send. Email us directly at",
+    error: "Couldn’t send. Write on Telegram:",
   },
   footer: {
     tagline: "Digital tools for complex products.",
@@ -298,7 +298,7 @@ export default {
     privacy: {
       title: "Privacy Policy",
       updated: "Last updated: August 2026",
-      contactLead: "Privacy requests:",
+      contactLead: "Privacy requests via Telegram:",
       sections: [
         {
           heading: "Who we are",
@@ -345,7 +345,7 @@ export default {
         {
           heading: "Your rights",
           paragraphs: [
-            "Depending on applicable EU/EEA law, you may have the right to access, rectify, erase, restrict or object to processing of your personal data, and to lodge a complaint with a supervisory authority. To exercise these rights, contact us using the email below.",
+            "Depending on applicable EU/EEA law, you may have the right to access, rectify, erase, restrict or object to processing of your personal data, and to lodge a complaint with a supervisory authority. To exercise these rights, contact us on Telegram using the link below.",
           ],
         },
       ],

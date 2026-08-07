@@ -5,7 +5,6 @@ export const siteConfig = {
   name: "ALT BUREAU",
   tagline: "3D Configurators & Digital Sales Tools for Manufacturers",
   url: "https://kefir161-spec.github.io/Formware_Company/",
-  email: "kefir161@gmail.com",
   telegram: {
     href: "https://t.me/Kefir161",
   },

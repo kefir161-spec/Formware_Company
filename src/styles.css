@@ -875,17 +875,27 @@ video {
 .case-proof {
   margin: 12px 0 0;
   color: #8eb4ff;
-  font-size: clamp(12px, 0.95vw, 14px);
-  letter-spacing: 0.03em;
+  font-size: clamp(12px, 0.92vw, 13.5px);
+  letter-spacing: 0.02em;
   line-height: 1.35;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  hyphens: none;
 }
 
 .case-impact {
   margin: 6px 0 0;
   color: #9dce8a;
-  font-size: clamp(12px, 0.95vw, 14px);
-  letter-spacing: 0.03em;
+  font-size: clamp(12px, 0.92vw, 13.5px);
+  letter-spacing: 0.02em;
   line-height: 1.35;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.case-cubik-copy {
+  min-width: 0;
 }
 
 .case-cubik .locale-note {
