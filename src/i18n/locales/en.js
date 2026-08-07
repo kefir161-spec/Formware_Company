@@ -48,6 +48,8 @@ export default {
           status: "CONFIGURATOR",
           title: "Aluminium protection",
           text: "Valid layouts · Exact quantities · Quote-ready price",
+          proof: "4 profile types · 9 layout presets · PDF/PNG export",
+          impact: "+20% quote conversion · −50% quote prep time",
           href: siteConfig.workLinks.aluminum,
           link: "Open live tool ↗",
           image: "/work/aluminum-configurator.png",
@@ -58,6 +60,8 @@ export default {
           status: "CALCULATOR",
           title: "Modular flooring",
           text: "Room planning · Exact quantities · Weight · Price",
+          proof: "741 calculable SKUs · 34 series · PNG/PDF/print export",
+          impact: "+15% close rate · −40% quantity rework",
           href: siteConfig.workLinks.flooring,
           link: "Open live calculator ↗",
           image: "/work/flooring-configurator.png",
@@ -77,6 +81,8 @@ export default {
           badge: "OPEN SOURCE",
           title: "StroyZhurnal",
           text: "Daily entries · Work types · Volume by performer",
+          proof: "3 performer roles · 4 KPI metrics · Volume by unit",
+          impact: "−45% time on daily logs · Fewer missing entries",
           href: siteConfig.workLinks.stroyzhurnal,
           link: "View on GitHub ↗",
           image: "/work/stroyzhurnal.png",
@@ -89,6 +95,8 @@ export default {
           badge: "OPEN SOURCE",
           title: "Cubik Core",
           text: "CRM · Expenses · Warehouse · Voice AI",
+          proof: "31 data entities · 4 RBAC roles · CSV/XLSX export",
+          impact: "−30% handoff delay · Faster follow-ups",
           href: siteConfig.workLinks.cubikCore,
           link: "View on GitHub ↗",
           image: "/work/cubik-core.png",
@@ -101,6 +109,8 @@ export default {
       client: "Cubik",
       title: "A 3D builder people actually order from",
       summary: "Build, price and save configurable products directly in the browser.",
+      proof: "5 shop SKUs · 5 colors · JSON / GLB / PDF export",
+      impact: "+25% configure-to-order conversion · Live price in cart",
       features: [
         { title: "Build in 3D", text: "Parametric assembly with product rules." },
         { title: "Price as you go", text: "Live pricing as the configuration changes." },
@@ -281,5 +291,80 @@ export default {
   footer: {
     tagline: "Digital tools for complex products.",
     region: siteConfig.region,
+  },
+  legal: {
+    kicker: "LEGAL",
+    backHome: "← Back to site",
+    privacy: {
+      title: "Privacy Policy",
+      updated: "Last updated: August 2026",
+      contactLead: "Privacy requests:",
+      sections: [
+        {
+          heading: "Who we are",
+          paragraphs: [
+            "This website is operated by ALT BUREAU. This policy explains what personal data we process when you use the site or contact us, and why.",
+          ],
+        },
+        {
+          heading: "What we collect",
+          paragraphs: [
+            "If you send the contact form, we process the details you submit so we can respond to your enquiry.",
+          ],
+          list: [
+            "Name",
+            "Work email",
+            "Company (optional)",
+            "Message content",
+          ],
+        },
+        {
+          heading: "How we use the data",
+          paragraphs: [
+            "We use contact-form data only to answer your enquiry and, where relevant, to continue a project discussion. We do not sell personal data.",
+          ],
+        },
+        {
+          heading: "Processors",
+          paragraphs: [
+            "Form submissions are delivered by email via FormSubmit (formsubmit.co) to our business inbox. Telegram is available as an optional channel if you choose to write there; that conversation is processed under Telegram’s own terms.",
+          ],
+        },
+        {
+          heading: "Cookies and analytics",
+          paragraphs: [
+            "This marketing site does not use advertising or analytics cookies. The browser may store technical data required to display the site. We do not run third-party ad trackers on these pages.",
+          ],
+        },
+        {
+          heading: "Retention",
+          paragraphs: [
+            "Enquiry emails are kept as long as needed to handle the conversation and ordinary business records, then deleted or archived according to our internal retention practice.",
+          ],
+        },
+        {
+          heading: "Your rights",
+          paragraphs: [
+            "Depending on applicable EU/EEA law, you may have the right to access, rectify, erase, restrict or object to processing of your personal data, and to lodge a complaint with a supervisory authority. To exercise these rights, contact us using the email below.",
+          ],
+        },
+      ],
+    },
+    imprint: {
+      title: "Imprint",
+      updated: "Last updated: August 2026",
+      providerHeading: "Service provider",
+      responsibleLabel: "Responsible person",
+      registerLabel: "Register",
+      vatLabel: "VAT ID",
+      contactHeading: "Contact",
+      emailLabel: "Email",
+      telegramLabel: "Telegram",
+      purposeHeading: "Purpose of the website",
+      purposeParagraphs: [
+        "This website presents ALT BUREAU’s work and capabilities — 3D configurators, calculators and focused business software for manufacturers — and provides a way to start a project discussion.",
+      ],
+      lawHeading: "Applicable law",
+    },
   },
 };

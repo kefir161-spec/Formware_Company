@@ -5,6 +5,7 @@ import { assetUrl } from "../lib/assetUrl";
 
 export default function Footer() {
   const { t } = useI18n();
+  const { privacyHref, imprintHref, privacyLabel, imprintLabel } = siteConfig.legal;
 
   return (
     <footer className="site-footer">
@@ -28,16 +29,8 @@ export default function Footer() {
       </nav>
       <div className="footer-meta">
         <span>{t.footer.region}</span>
-        {siteConfig.legal.privacyHref ? (
-          <a href={siteConfig.legal.privacyHref}>{siteConfig.legal.privacyLabel}</a>
-        ) : (
-          <span className="legal-placeholder">{siteConfig.legal.privacyLabel}</span>
-        )}
-        {siteConfig.legal.imprintHref ? (
-          <a href={siteConfig.legal.imprintHref}>{siteConfig.legal.imprintLabel}</a>
-        ) : (
-          <span className="legal-placeholder">{siteConfig.legal.imprintLabel}</span>
-        )}
+        <a href={privacyHref}>{privacyLabel}</a>
+        <a href={imprintHref}>{imprintLabel}</a>
       </div>
     </footer>
   );

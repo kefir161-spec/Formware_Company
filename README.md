@@ -32,4 +32,4 @@ If the endpoint is missing, the contact block shows an email fallback from `src/
 
 - Add real contact email in `siteConfig.email`.
 - Connect `VITE_CONTACT_ENDPOINT`.
-- Replace privacy / imprint placeholders with real EU legal pages.
+- Fill `legal.addressLines`, `vatId`, `companyRegister` and `responsible` in `src/siteConfig.js` when the operating entity details are ready (Imprint already links from the footer).

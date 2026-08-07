@@ -79,6 +79,8 @@ function DualProductCase({ data }) {
               <div className="pf-product-meta">
                 <h4>{product.title}</h4>
                 <p>{product.text}</p>
+                {product.proof ? <p className="pf-proof mono">{product.proof}</p> : null}
+                {product.impact ? <p className="pf-impact mono">{product.impact}</p> : null}
                 <a className="pf-cta" href={product.href} target="_blank" rel="noopener noreferrer">
                   {product.link}
                 </a>
@@ -149,6 +151,8 @@ function CubikCase({ data, localeNote }) {
           <p className="mono case-client">{data.client}</p>
           <h3>{data.title}</h3>
           <p className="case-summary">{data.summary}</p>
+          {data.proof ? <p className="case-proof mono">{data.proof}</p> : null}
+          {data.impact ? <p className="case-impact mono">{data.impact}</p> : null}
           <ul className="cubik-features">
             {data.features.map((feature) => (
               <li className="cubik-feature" key={feature.title}>

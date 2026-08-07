@@ -1,6 +1,5 @@
 /**
  * Single source for brand identity and primary links.
- * Replace email / legal placeholders when final details are ready.
  */
 export const siteConfig = {
   name: "ALT BUREAU",
@@ -22,11 +21,18 @@ export const siteConfig = {
   ],
   cta: { href: "#contact", labelKey: "discussProject" },
   legal: {
-    privacyHref: "",
-    imprintHref: "",
-    /** Explicit placeholders — not live legal pages */
-    privacyLabel: "Privacy (to be connected)",
-    imprintLabel: "Imprint (to be connected)",
+    privacyHref: "#privacy",
+    imprintHref: "#imprint",
+    privacyLabel: "Privacy",
+    imprintLabel: "Imprint",
+    /** Operator shown on Imprint — fill address / VAT / register when available */
+    operator: "ALT BUREAU",
+    responsible: "",
+    addressLines: [],
+    // Example when ready: ["Street 1", "City, Country"]
+    vatId: "",
+    companyRegister: "",
+    governingLaw: "European Union / applicable local law",
   },
   workLinks: {
     aluminum: "https://kefir161-spec.github.io/aluminum-mudguard/",
